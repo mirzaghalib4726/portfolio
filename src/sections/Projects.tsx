@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ArrowUpRight, CircleCheck, Eye, X } from 'lucide-react'
-import { projects, type Project } from '../data/profile'
-import { FilterPills, PageHeader, UpNext } from '../components/Shared'
+import { ArrowUpRight, CircleCheck, Eye, Wrench, X } from 'lucide-react'
+import { builds, projects, starters, type Project } from '../data/profile'
+import { FilterPills, PageHeader, UpNext, fadeUp } from '../components/Shared'
 import type { TabId } from '../tabs'
 
 const ALL = 'All'
@@ -104,6 +104,48 @@ export function Projects({ onNavigate }: { onNavigate: (t: TabId) => void }) {
             </motion.article>
           ))}
         </AnimatePresence>
+      </motion.div>
+
+      <motion.div {...fadeUp} className="mt-24">
+        <h2 className="font-display text-3xl font-bold tracking-tight">More builds</h2>
+        <p className="mt-2 max-w-2xl text-muted">Side projects, experiments and smaller services — APIs, real-time apps, AI tools and scrapers.</p>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {builds.map((b) => (
+            <div key={b.name} className="panel flex flex-col p-5">
+              <div className="flex items-start justify-between gap-3">
+                <h3 className="font-display text-lg font-semibold leading-snug">{b.name}</h3>
+                <span className="shrink-0 font-mono text-[11px] text-muted">{b.year}</span>
+              </div>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{b.blurb}</p>
+              <ul className="mt-4 flex flex-wrap gap-1.5">
+                {b.stack.map((t) => (
+                  <li key={t} className="chip">
+                    {t}
+                  </li>
+                ))}
+              </ul>
+              {b.link && (
+                <a href={b.link.href} target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline">
+                  {b.link.label} <ArrowUpRight size={15} />
+                </a>
+              )}
+            </div>
+          ))}
+        </div>
+      </motion.div>
+
+      <motion.div {...fadeUp} className="panel mt-10 p-6 sm:p-7">
+        <h3 className="flex items-center gap-2 font-display text-lg font-semibold">
+          <Wrench size={18} className="text-accent" /> Starters &amp; tooling
+        </h3>
+        <ul className="mt-4 flex flex-wrap gap-2">
+          {starters.map((t) => (
+            <li key={t.name} className="chip gap-2">
+              {t.name}
+              <span className="text-muted">· {t.year}</span>
+            </li>
+          ))}
+        </ul>
       </motion.div>
 
       <AnimatePresence>

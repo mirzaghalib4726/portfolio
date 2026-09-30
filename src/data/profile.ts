@@ -28,7 +28,7 @@ export const profile = {
 
 export const stats = [
   { value: '4', label: 'Years experience', icon: 'timer' },
-  { value: '10+', label: 'Platforms shipped', icon: 'rocket' },
+  { value: '35+', label: 'Projects built', icon: 'rocket' },
   { value: '200+', label: 'PRs reviewed', icon: 'code' },
   { value: '5', label: 'Companies', icon: 'building' },
 ] as const
@@ -75,17 +75,17 @@ export const skillGroups = [
   {
     icon: 'layout',
     title: 'Frontend',
-    items: ['React', 'Next.js', 'Nuxt / Vue 3', 'Vite', 'Redux Toolkit', 'TanStack Query', 'Tailwind CSS', 'Electron'],
+    items: ['React', 'Next.js', 'Nuxt / Vue 3', 'Vite', 'Redux Toolkit', 'TanStack Query', 'Tailwind CSS', 'Angular', 'Electron'],
   },
   {
     icon: 'database',
     title: 'Data & Queues',
-    items: ['PostgreSQL', 'MySQL', 'MongoDB', 'TypeORM', 'Mongoose', 'Sequelize', 'Redis', 'BullMQ / Bull', 'SQLite'],
+    items: ['PostgreSQL', 'MySQL', 'MongoDB', 'TypeORM', 'Mongoose', 'Sequelize', 'Redis', 'BullMQ / Bull', 'Kafka', 'SQLite', 'Firebase'],
   },
   {
     icon: 'bot',
     title: 'AI & Automation',
-    items: ['OpenAI', 'LangChain', 'Anthropic Claude', 'Tesseract OCR', 'PDF / DOCX extraction', 'Playwright', 'Puppeteer', 'YOLO', 'ResNet-50', 'FastAPI model serving'],
+    items: ['OpenAI', 'LangChain', 'Anthropic Claude', 'Tesseract OCR', 'PDF / DOCX extraction', 'Playwright', 'Puppeteer', 'Google Gemini', 'TensorFlow', 'YOLO', 'ResNet-50', 'FAISS', 'FastAPI model serving'],
   },
   {
     icon: 'shield',
@@ -127,7 +127,7 @@ export const experience: Experience[] = [
     period: 'Oct 2024 – May 2025',
     points: [
       'Delivered scalable NestJS systems following clean architecture and strict TypeScript standards.',
-      'Built Socket.IO real-time experiences and conversational AI workflows.',
+      'Built Socket.IO real-time experiences and conversational AI workflows, including the Safeli messenger backend (chatrooms, projects, pinned and read messages).',
       'Built secure middleware, auth guards and interceptors, Swagger API docs, and Docker-based deployments.',
     ],
   },
@@ -365,21 +365,71 @@ export const projects: Project[] = [
     hue: 190,
   },
   {
-    name: 'Furniture Marketplace',
-    tagline: 'Final-year project · multi-vendor e-commerce',
+    name: 'MIHU',
+    tagline: 'Final-year project · furniture marketplace + visual search',
     category: 'Marketplaces',
-    period: 'BSc Final-Year Project',
-    role: 'University of Central Punjab',
+    period: 'Oct 2022 – Jun 2023',
+    role: 'BSc final-year project (team of 4)',
     description:
-      'A multi-vendor e-commerce platform where furniture vendors list and sell furniture and related items, and customers browse and buy them.',
+      'A multi-vendor furniture marketplace aggregating Pakistani furniture brands, with separate seller and customer logins and a "search by photo" reverse image search engine.',
     highlights: [
-      'Separate seller and customer accounts, each with its own login and dashboard.',
-      'Seller tools to post, edit and manage furniture listings.',
-      'Customer storefront to browse products, add to cart and place orders.',
-      'Python FastAPI backend serving the marketplace API.',
+      'Built the Puppeteer scraping system that collects products from six furniture brands (Enza, Habitt, Hoid, Interwood, Tarkhan, Urban Galleria) into the catalogue.',
+      'Built the reverse image search: ResNet-50 (TensorFlow) feature extraction for every product image, FAISS similarity search, served through a Python FastAPI API.',
+      'Wrote the pipelines that generate feature CSVs, clean the image dataset and sync results into MongoDB.',
+      'Marketplace backend in Express and MongoDB with JWT auth for sellers and customers, carts, orders, reviews and Stripe payments; React + Redux Toolkit storefront.',
     ],
-    stack: ['Python', 'FastAPI', 'REST APIs', 'Authentication', 'E-commerce'],
+    stack: ['Python', 'FastAPI', 'TensorFlow', 'ResNet-50', 'FAISS', 'OpenCV', 'Puppeteer', 'Node.js', 'Express', 'MongoDB', 'Stripe', 'React', 'Redux Toolkit', 'Tailwind CSS'],
+    links: [{ label: 'mihu-prod.vercel.app', href: 'https://mihu-prod.vercel.app' }],
     hue: 28,
+  },
+  {
+    name: 'Safeli',
+    tagline: 'Real-time team messenger backend',
+    category: 'Enterprise SaaS',
+    period: 'Oct 2024',
+    role: 'Backend engineer · Aug AI',
+    description:
+      'The NestJS backend for a collaboration app: projects, chatrooms and real-time messaging over WebSockets.',
+    highlights: [
+      'Socket.IO gateway for live messaging, with send, edit, pin, read-receipt and delete flows.',
+      'Chatrooms and projects that members can create, join, leave and pin.',
+      'JWT auth guards, email service, global exception filter and Swagger-documented APIs on MongoDB.',
+    ],
+    stack: ['NestJS', 'Socket.IO', 'WebSockets', 'MongoDB', 'JWT', 'Swagger', 'Nodemailer'],
+    hue: 210,
+  },
+  {
+    name: 'Committee System',
+    tagline: 'Rotating savings committee manager',
+    category: 'Enterprise SaaS',
+    period: 'Apr 2025',
+    role: 'Solo · full stack',
+    description:
+      'Manages a rotating savings "committee": members, monthly contributions, payout order and payment status for each month.',
+    highlights: [
+      'NestJS + MongoDB API for members, contributions, receivable months and per-month payment status.',
+      'Next.js dashboard with users and contributions views, plus an earlier React + Vite client.',
+      'Deployed on Vercel.',
+    ],
+    stack: ['NestJS', 'MongoDB', 'Mongoose', 'Next.js', 'React', 'Vite', 'Tailwind CSS', 'Framer Motion'],
+    links: [{ label: 'committee-system.vercel.app', href: 'https://committee-system.vercel.app' }],
+    hue: 250,
+  },
+  {
+    name: 'Metro',
+    tagline: 'Full-stack e-commerce on Nuxt 4',
+    category: 'Marketplaces',
+    period: 'Nov 2025',
+    role: 'Solo · full stack',
+    description:
+      'A full-stack e-commerce platform built entirely in Nuxt 4 with MongoDB — admin, seller and customer roles in one app.',
+    highlights: [
+      'JWT authentication with role-based access for Admin, Seller and Customer, bcrypt hashing and Zod validation.',
+      'Product CRUD with categories, stock management, search and filtering.',
+      'Admin dashboard with live catalogue metrics, recent orders and a 30-day revenue snapshot; order processing flow.',
+    ],
+    stack: ['Nuxt 4', 'Vue 3', 'Pinia', 'MongoDB', 'Mongoose', 'JWT', 'Zod', 'Tailwind CSS'],
+    hue: 330,
   },
 ]
 
@@ -388,7 +438,7 @@ export const education = [
     degree: 'BSc Computer Science',
     school: 'University of Central Punjab, Lahore',
     detail: 'CGPA 3.84',
-    note: 'Final-year project: multi-vendor furniture e-commerce marketplace with seller and customer logins, built on a Python FastAPI backend.',
+    note: 'Final-year project: MIHU — a multi-vendor furniture marketplace with ResNet-50 reverse image search served over FastAPI.',
   },
   {
     degree: 'Intermediate in Computer Science',
@@ -404,3 +454,37 @@ export const certifications = [
 ]
 
 export const languages = ['English (Fluent)', 'Urdu (Native)']
+
+export type Build = {
+  name: string
+  blurb: string
+  stack: string[]
+  year: string
+  link?: { label: string; href: string }
+}
+
+export const builds: Build[] = [
+  { name: 'Kafka Todo App', blurb: 'Event-driven NestJS task app — auth, tasks and notifications over Kafka topics, Dockerised with Swagger docs.', stack: ['NestJS', 'Kafka', 'MongoDB', 'JWT', 'Docker'], year: '2025' },
+  { name: 'Event Management API', blurb: 'Events, users and ticket payments with Stripe on a Sequelize/PostgreSQL NestJS backend.', stack: ['NestJS', 'Sequelize', 'PostgreSQL', 'Stripe'], year: '2025' },
+  { name: 'Food Ordering API', blurb: 'NestJS ordering API with Passport JWT, Joi-validated config, Winston logging and Swagger.', stack: ['NestJS', 'TypeORM', 'PostgreSQL', 'Passport'], year: '2025' },
+  { name: 'AI Chatbot', blurb: 'Next.js chatbot on Google Gemini with Firebase Google sign-in, follow-up suggestions and dark mode.', stack: ['Next.js', 'Gemini', 'Firebase', 'Tailwind'], year: '2025' },
+  { name: 'FurniHaven Store', blurb: 'Angular 19 furniture storefront — categories, brands, cart, profile and an image-search modal.', stack: ['Angular 19', 'TypeScript', 'Tailwind'], year: '2025' },
+  { name: 'Puppeteer Scraper', blurb: 'Puppeteer scraper that collects listing data from multiple websites and exports it to CSV.', stack: ['Node.js', 'Puppeteer', 'json2csv'], year: '2025' },
+  { name: 'Sequelize → TypeORM Migrator', blurb: 'CLI that converts YAML Sequelize model definitions into TypeORM entities and flags missing files.', stack: ['Node.js', 'js-yaml', 'glob'], year: '2025' },
+  { name: 'Resume Generator', blurb: 'React app for building and previewing a resume in the browser.', stack: ['React', 'Vite'], year: '2024', link: { label: 'Live', href: 'https://resume-generator-brown.vercel.app' } },
+  { name: 'Socket.IO Client Service', blurb: 'NestJS service that connects to a Socket.IO server as a client and handles its events.', stack: ['NestJS', 'socket.io-client'], year: '2024' },
+  { name: 'Express TypeScript Debugger', blurb: 'Express + TypeScript API template wired for step-through debugging, with routes, controllers and models.', stack: ['Express', 'TypeScript'], year: '2024' },
+  { name: 'Avantad Auth Service', blurb: 'NestJS user, auth-guard and transactional email modules with Swagger and hot reload.', stack: ['NestJS', 'JWT', 'Nodemailer', 'Swagger'], year: '2023–24' },
+  { name: 'Quiz Manager', blurb: 'NestJS quiz and question modules with DTO validation and schemas.', stack: ['NestJS', 'MongoDB'], year: '2023–24' },
+  { name: 'REST + GraphQL CRUD API', blurb: 'One service exposing both REST and an Apollo GraphQL subgraph, with JWT-protected routes.', stack: ['Express', 'Apollo Server', 'GraphQL', 'MongoDB'], year: '2023' },
+  { name: 'Chat App', blurb: 'One-to-one and group chat with sessions, file uploads and live messages.', stack: ['Express', 'Socket.IO', 'MongoDB', 'EJS'], year: '2023' },
+]
+
+export const starters = [
+  { name: 'NestJS + PostgreSQL + Mongoose + Swagger + GraphQL boilerplate', year: '2024' },
+  { name: 'NestJS boilerplate (auth guard, decorators, middlewares)', year: '2025' },
+  { name: 'MEAN stack boilerplate', year: '2025' },
+  { name: 'Firebase boilerplate', year: '2024' },
+  { name: 'login-utils — TypeScript npm utility', year: '2023' },
+  { name: 'pluck — typed array-of-objects key picker', year: '2023' },
+]
