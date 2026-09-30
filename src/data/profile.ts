@@ -249,6 +249,7 @@ export const projects: Project[] = [
       'Worked on the NestJS 11 + TypeORM rebuild, which uses JWT in httpOnly cookies and deny-by-default RBAC + PBAC authorization.',
     ],
     stack: ['NestJS 11', 'TypeORM', 'PostgreSQL', 'Redis', 'Anthropic Claude', 'AWS S3', 'Next.js 15', 'Redux Toolkit / RTK Query', 'Tailwind CSS', 'Radix UI'],
+    links: [{ label: 'app.weclosebooks.com', href: 'https://app.weclosebooks.com' }],
     hue: 142,
   },
   {
