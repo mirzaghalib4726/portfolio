@@ -232,7 +232,7 @@ export const projects: Project[] = [
       'Rebuilt the admin dashboard on real load data, moved the UI onto a shared design-token system, and removed an injected malware loader from the toolchain.',
     ],
     stack: ['NestJS 11', 'PostgreSQL', 'TypeORM', 'Redis', 'BullMQ', 'Socket.IO', 'React 19', 'Vite', 'Tailwind v4', 'AWS S3'],
-    links: [{ label: 'On Time Transport dispatch board', href: 'https://develop.d2qodc42dqgz5i.amplifyapp.com/dispatcher/board' }],
+    links: [{ label: 'On Time Transport web app', href: 'https://develop.d2qodc42dqgz5i.amplifyapp.com/' }],
     hue: 32,
   },
   {
