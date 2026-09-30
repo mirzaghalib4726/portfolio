@@ -1,0 +1,129 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --color-background: var(--bg);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-raised: var(--raised);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-chip: var(--chip);
+}
+
+:root {
+  --bg: #faf6ee;
+  --surface: #fdfaf4;
+  --card: #fffdf8;
+  --raised: #f3ede1;
+  --ink: #1a2433;
+  --muted: #4c5f7d;
+  --line: #e2d9c7;
+  --accent: #2563eb;
+  --accent-soft: #1d4ed8;
+  --chip: #f3ede1;
+  --glass: rgba(255, 255, 255, 0.55);
+  --glow: rgba(37, 99, 235, 0.35);
+  --net-node: 37, 99, 235;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #04070d;
+  --surface: #0a101a;
+  --card: #0f1624;
+  --raised: #161f30;
+  --ink: #e4e9f2;
+  --muted: #9aabc6;
+  --line: #22324b;
+  --accent: #3b82f6;
+  --accent-soft: #9ec5ff;
+  --chip: #131c2c;
+  --glass: rgba(15, 22, 36, 0.6);
+  --glow: rgba(59, 130, 246, 0.45);
+  --net-node: 96, 165, 250;
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-background text-ink font-sans antialiased;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Soft ambient wash behind everything */
+.ambient {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(60rem 40rem at 85% -10%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 60%),
+    radial-gradient(50rem 35rem at -10% 110%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 60%);
+}
+
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--line));
+}
+
+.panel {
+  @apply rounded-3xl border border-line bg-card;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 18px 40px -28px rgba(15, 23, 42, 0.35);
+}
+
+.chip {
+  @apply inline-flex items-center rounded-md border border-line bg-chip px-2.5 py-1 font-mono text-[11px] text-ink/80;
+}
+
+.eyebrow {
+  @apply inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-accent;
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3 font-medium text-white transition-all duration-200;
+}
+.btn-primary:hover {
+  box-shadow: 0 0 28px var(--glow);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl border border-line bg-card px-6 py-3 font-medium text-accent transition-all duration-200;
+}
+.btn-ghost:hover {
+  border-color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
