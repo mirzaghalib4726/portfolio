@@ -2,7 +2,7 @@
 
 export const profile = {
   name: 'Mirza Usama Ali Baig',
-  shortName: 'Mirza U.',
+  shortName: 'Mirza Usama Ali Baig',
   initials: 'MU',
   title: 'Senior Full-Stack Engineer',
   headline: 'Senior Full-Stack Engineer',

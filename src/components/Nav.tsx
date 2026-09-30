@@ -22,11 +22,11 @@ export function Nav({ active, onNavigate, dark, onToggleTheme }: Props) {
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-8">
       <nav className="glass mx-auto flex max-w-6xl items-center justify-between rounded-full py-2.5 pl-6 pr-2.5 shadow-[0_10px_30px_-18px_rgba(15,23,42,0.4)]">
-        <button onClick={() => go('home')} className="font-display text-xl font-bold tracking-tight text-accent">
+        <button onClick={() => go('home')} className="whitespace-nowrap font-display text-lg font-bold tracking-tight text-accent sm:text-xl">
           {profile.shortName}
         </button>
 
-        <ul className="hidden items-center gap-1 md:flex">
+        <ul className="hidden items-center gap-1 lg:flex">
           {TABS.map((t) => (
             <li key={t.id}>
               <button
@@ -68,7 +68,7 @@ export function Nav({ active, onNavigate, dark, onToggleTheme }: Props) {
             onClick={() => setOpen((o) => !o)}
             aria-label="Toggle menu"
             aria-expanded={open}
-            className="grid h-10 w-10 place-items-center rounded-full border border-line bg-card text-ink md:hidden"
+            className="grid h-10 w-10 place-items-center rounded-full border border-line bg-card text-ink lg:hidden"
           >
             {open ? <X size={18} /> : <Menu size={18} />}
           </button>
@@ -81,7 +81,7 @@ export function Nav({ active, onNavigate, dark, onToggleTheme }: Props) {
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            className="glass mx-auto mt-2 max-w-6xl rounded-3xl p-3 md:hidden"
+            className="glass mx-auto mt-2 max-w-6xl rounded-3xl p-3 lg:hidden"
           >
             {TABS.map((t) => (
               <button
